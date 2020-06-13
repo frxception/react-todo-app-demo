@@ -2,23 +2,22 @@ import React from 'react'
 import ItemHolder from "./item-holder";
 
 
-const ItemList = ({items, item, actionDelete}) => {
+const ItemList = ({itemList, actionDelete}) => {
+    console.log("itemList: ", itemList)
     return (
         <div>
             <ul>
                 {
-                    items.map((item, index)=>{
+                    itemList.map((item, index)=>{
                         return(
-                            // <li className='item' key={index}>
-                            //     {item} <button className='delete' onClick={()=>actionDelete(item)}>X</button>
-                            // </li>
-                            <ItemHolder key={index} id={index} item={item} actionDelete={actionDelete}></ItemHolder>
+                            <ItemHolder key={index} item={item} actionDelete={actionDelete}></ItemHolder>
                         )
-                })
+                     })
                 }
             </ul>
         </div>
     )
 }
+// <li key={index}>{item.text}-{item.id}</li>
 
 export default ItemList;

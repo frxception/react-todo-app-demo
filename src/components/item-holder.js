@@ -2,10 +2,12 @@ import React from "react";
 import './item-holder.css'
 
 
-const ItemHolder = (props) =>{
+const ItemHolder = ({item, actionDelete}) =>{
+    console.log('holder: ',item.id)
+    console.log('holder: ',item.text)
     return (
-            <li className='item' key={props.id}>
-                {props.item} <button className='delete' onClick={()=>props.actionDelete(props.item)}>X</button>
+            <li className='item' key={item.id}>
+                {item.id}-{item.text} <button className='delete' onClick={()=>actionDelete(item.id)}>X</button>
             </li>
     )
 }
