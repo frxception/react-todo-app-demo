@@ -1,0 +1,16 @@
+
+.item{
+    justify-content: left;
+    text-align: left;
+    
+}
+.item-id{
+    font-size:12px;
+    color: gray;
+}
+.text{
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 21px;
+}
