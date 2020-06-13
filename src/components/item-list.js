@@ -12,7 +12,7 @@ const ItemList = ({items, item, actionDelete}) => {
                             // <li className='item' key={index}>
                             //     {item} <button className='delete' onClick={()=>actionDelete(item)}>X</button>
                             // </li>
-                            <ItemHolder key={index} item={item} actionDelete={actionDelete}></ItemHolder>
+                            <ItemHolder key={index} id={index} item={item} actionDelete={actionDelete}></ItemHolder>
                         )
                 })
                 }

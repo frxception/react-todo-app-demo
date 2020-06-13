@@ -4,7 +4,7 @@ import './item-holder.css'
 
 const ItemHolder = (props) =>{
     return (
-            <li className='item' key={props.key}>
+            <li className='item' key={props.id}>
                 {props.item} <button className='delete' onClick={()=>props.actionDelete(props.item)}>X</button>
             </li>
     )
