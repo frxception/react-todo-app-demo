@@ -2,7 +2,9 @@ import Actions from './action'
 
 const initialState = {
     item: {
-        id: '', text: ''
+        id: '', 
+        text: '', 
+        completed: false
     },
     itemList: []
 }
@@ -51,6 +53,13 @@ const reducers = ( state = initialState, action) => {
             }
         }
 
+        case Actions.Types.COMPLETED_ITEM: {
+            return {
+                ...state,
+                itemList:  state.itemList.map(item=>item.id === action.payload ? {...item, completed: !item.completed} : item)
+                
+            }
+        }
 
         default: return state;
     }

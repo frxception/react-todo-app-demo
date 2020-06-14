@@ -2,7 +2,8 @@ export const Types = {
     ADD_ITEM: 'ADD_ITEM',
     DELETE_ITEM: 'DELETE_ITEM',
     EDIT_ITEM: 'EDIT_ITEM',
-    CURRENT_ITEM: 'CURRENT_ITEM'
+    CURRENT_ITEM: 'CURRENT_ITEM',
+    COMPLETED_ITEM: 'COMPLETED_ITEM'
 }
 
 export const addItem = item => ({
@@ -25,10 +26,16 @@ export const currentItem = text => ({
     payload: text
 })
 
+export const completedItem = id => ({
+    type: Types.COMPLETED_ITEM,
+    payload: id
+})
+
 export default {
     Types,
     addItem,
     editItem,
     deleteItem,
-    currentItem
+    currentItem,
+    completedItem
 }

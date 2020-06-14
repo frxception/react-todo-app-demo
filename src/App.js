@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux'
-import { addItem, editItem, deleteItem, currentItem } from './store/action'
+import {addItem, editItem, deleteItem, currentItem, completedItem} from './store/action'
 
 import ItemList from './components/item-list'
 import './App.css';
@@ -30,6 +30,11 @@ class App extends React.Component {
         deleteItem(id)
     }
 
+    actionCompleted = (id) => {
+        const {completedItem} = this.props;
+        completedItem(id)
+    }
+    
     render() {
         console.log('[Render App component]')
         const {itemList} = this.props
@@ -43,7 +48,7 @@ class App extends React.Component {
                         <button type="submit">submit</button>
                     </form>
 
-                    <ItemList itemList={itemList} actionDelete={this.actionDelete} actionEdit={this.actionEdit} />
+                    <ItemList itemList={itemList} actionDelete={this.actionDelete} actionEdit={this.actionEdit} actionCompleted={this.actionCompleted}/>
 
                 </header>
             </div>
@@ -62,7 +67,8 @@ const mapDispatchToProps = dispatch => ({
     currentItem: text => dispatch(currentItem(text)),
     addItem: item => dispatch(addItem(item)),
     deleteItem: id => dispatch(deleteItem(id)),
-    editItem: item => dispatch(editItem(item))
+    editItem: item => dispatch(editItem(item)),
+    completedItem: id => dispatch(completedItem(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
