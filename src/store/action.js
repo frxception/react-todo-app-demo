@@ -6,10 +6,24 @@ export const Types = {
     COMPLETED_ITEM: 'COMPLETED_ITEM'
 }
 
-export const addItem = item => ({
-    type: Types.ADD_ITEM,
-    payload: item
-})
+// export const addItem = item => ({
+//     type: Types.ADD_ITEM,
+//     payload: item
+// })
+
+export const addItem = item => {
+    //NOTE: this simulates an async call (all posible by using redux thunk)
+    return dispatch => {
+        setTimeout(()=>{
+            dispatch(
+                {
+                    type: Types.ADD_ITEM,
+                    payload: item
+                }
+            );
+        },500);
+    }
+}
 
 export const editItem = item => ({
     type: Types.EDIT_ITEM,
