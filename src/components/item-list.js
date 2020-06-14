@@ -1,7 +1,5 @@
 import React from 'react'
 import './item-list.css'
-// import ItemHolder from "./item-holder";
-
 
 const ItemList = props => {
     console.log('[Render ItemList component] props: ', props)
