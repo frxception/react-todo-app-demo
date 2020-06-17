@@ -3,7 +3,9 @@ export const Types = {
     DELETE_ITEM: 'DELETE_ITEM',
     EDIT_ITEM: 'EDIT_ITEM',
     CURRENT_ITEM: 'CURRENT_ITEM',
-    COMPLETED_ITEM: 'COMPLETED_ITEM'
+    COMPLETED_ITEM: 'COMPLETED_ITEM',
+    MOVE_UP: 'MOVE_UP',
+    MOVE_DOWN: 'MOVE_DOWN'
 }
 
 // export const addItem = item => ({
@@ -45,11 +47,23 @@ export const completedItem = id => ({
     payload: id
 })
 
+export const moveUp = item => ({
+    type: Types.MOVE_UP,
+    payload: item
+})
+
+export const moveDown = item => ({
+    type: Types.MOVE_DOWN,
+    payload: item
+})
+
 export default {
     Types,
     addItem,
     editItem,
     deleteItem,
     currentItem,
-    completedItem
+    completedItem,
+    moveUp,
+    moveDown
 }

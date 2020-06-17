@@ -21,6 +21,8 @@ const ItemList = props => {
                                    textDecoration: item.completed ? "line-through" : ""
                                }}
                         />
+                        <button className='up' onClick={() => props.actionMoveUp(item)}>up</button>
+                        <button className='down' onClick={() => props.actionMoveDown(item)}>down</button>
                         <button className='delete' onClick={() => props.actionDelete(item)}>X</button>
                     </li>
                 })

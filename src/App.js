@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux'
-import {addItem, editItem, deleteItem, currentItem, completedItem} from './store/action'
+import {addItem, editItem, deleteItem, currentItem, completedItem, moveUp, moveDown} from './store/action'
 
 import ItemList from './components/item-list'
 import './App.css';
@@ -35,6 +35,16 @@ class App extends React.Component {
         completedItem(id)
     }
     
+    actionMoveUp = (item) => {
+        const {moveUp} = this.props
+        moveUp(item)
+    }
+
+    actionMoveDown = (item) => {
+        const {moveDown} = this.props
+        moveDown(item)
+    }
+    
     render() {
         console.log('[Render App component]')
         const {itemList} = this.props
@@ -48,7 +58,12 @@ class App extends React.Component {
                         <button type="submit">submit</button>
                     </form>
 
-                    <ItemList itemList={itemList} actionDelete={this.actionDelete} actionEdit={this.actionEdit} actionCompleted={this.actionCompleted}/>
+                    <ItemList itemList={itemList} actionDelete={this.actionDelete} 
+                              actionEdit={this.actionEdit} 
+                              actionCompleted={this.actionCompleted}
+                              actionMoveUp={this.actionMoveUp}
+                              actionMoveDown={this.actionMoveDown}
+                    />
 
                 </header>
             </div>
@@ -68,7 +83,9 @@ const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item)),
     deleteItem: id => dispatch(deleteItem(id)),
     editItem: item => dispatch(editItem(item)),
-    completedItem: id => dispatch(completedItem(id))
+    completedItem: id => dispatch(completedItem(id)),
+    moveUp: item => dispatch(moveUp(item)),
+    moveDown: item => dispatch(moveDown(item))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

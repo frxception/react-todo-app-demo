@@ -60,6 +60,36 @@ const reducers = ( state = initialState, action) => {
                 
             }
         }
+        
+        case Actions.Types.MOVE_UP: {
+            const items = [...state.itemList]
+            const sIdx = items.findIndex((f, idx)=>action.payload.id === f.id)
+            const oldUpItem = items[sIdx-1] || null
+            //items.splice(sIdx-1, 1, items[sIdx])
+            if(oldUpItem){
+                items[sIdx] = oldUpItem
+                items[sIdx - 1] = state.itemList[sIdx]
+            }
+            
+            return {
+                ...state,
+                itemList: items
+            }
+        }
+
+        case Actions.Types.MOVE_DOWN: {
+            const items = [...state.itemList]
+            const sIdx = items.findIndex((f, idx)=>action.payload.id === f.id)
+            const oldDownItem = items[sIdx+1] || null
+            if(oldDownItem){
+                items[sIdx] = oldDownItem
+                items[sIdx + 1] = state.itemList[sIdx]
+            }
+            return {
+                ...state,
+                itemList: items
+            }
+        }
 
         default: return state;
     }
