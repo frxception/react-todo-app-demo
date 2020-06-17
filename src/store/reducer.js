@@ -62,15 +62,19 @@ const reducers = ( state = initialState, action) => {
         }
         
         case Actions.Types.MOVE_UP: {
-            const items = [...state.itemList]
+            let items = [...state.itemList]
             const sIdx = items.findIndex((f, idx)=>action.payload.id === f.id)
             const oldUpItem = items[sIdx-1] || null
-            //items.splice(sIdx-1, 1, items[sIdx])
             if(oldUpItem){
-                items[sIdx] = oldUpItem
-                items[sIdx - 1] = state.itemList[sIdx]
+                items[sIdx] = { 
+                    id: state.itemList[sIdx].id , 
+                    text: oldUpItem.text
+                }
+                items[sIdx - 1] = { 
+                    id: state.itemList[sIdx-1].id,
+                    text: state.itemList[sIdx].text
+                } 
             }
-            
             return {
                 ...state,
                 itemList: items
@@ -82,8 +86,15 @@ const reducers = ( state = initialState, action) => {
             const sIdx = items.findIndex((f, idx)=>action.payload.id === f.id)
             const oldDownItem = items[sIdx+1] || null
             if(oldDownItem){
-                items[sIdx] = oldDownItem
-                items[sIdx + 1] = state.itemList[sIdx]
+                items[sIdx] = {
+                    id: state.itemList[sIdx].id,
+                    text: oldDownItem.text
+                }
+                
+                items[sIdx + 1] = {
+                    id: state.itemList[sIdx+1].id,
+                    text: state.itemList[sIdx].text
+                }
             }
             return {
                 ...state,
